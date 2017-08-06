@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  Suohai
+
+  Created by Sunnyyoung on 2017/8/6.
+  Copyright © 2017年 Sunnyyoung. All rights reserved.
+*/
+
+"Quit" = "退出";
+"OutputDevices" = "输出设备：";
+"InputDevices" = "输出设备：";
