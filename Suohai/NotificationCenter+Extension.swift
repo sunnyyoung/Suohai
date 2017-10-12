@@ -20,5 +20,4 @@ extension NotificationCenter {
     static func removeObserver(observer: Any, name: SuohaiNotification, object: Any? = nil) {
         NotificationCenter.default.removeObserver(observer, name: name.notificationName, object: object)
     }
-
 }
