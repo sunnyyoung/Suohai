@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D4CA5B0215CE13900E8CB35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D4CA5B2215CE13900E8CB35 /* Main.storyboard */; };
 		7DADF85F1F347E8200BB0DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADF85E1F347E8200BB0DF2 /* AppDelegate.swift */; };
 		7DADF8631F347E8200BB0DF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DADF8621F347E8200BB0DF2 /* Assets.xcassets */; };
 		7DADF8711F347ED100BB0DF2 /* NotificationCenter+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADF86F1F347ED100BB0DF2 /* NotificationCenter+Extension.swift */; };
 		7DADF8721F347ED100BB0DF2 /* NSMenuItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADF8701F347ED100BB0DF2 /* NSMenuItem+Extension.swift */; };
 		7DADF8751F347F0200BB0DF2 /* SuohaiListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADF8731F347F0200BB0DF2 /* SuohaiListener.swift */; };
 		7DADF8761F347F0200BB0DF2 /* SuohaiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADF8741F347F0200BB0DF2 /* SuohaiController.swift */; };
-		7DB6A5CA1F37081700149D6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DB6A5C91F37081700149D6D /* Main.storyboard */; };
 		7DB6A5D11F37090100149D6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7DB6A5D31F37090100149D6D /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7D4CA5B1215CE13900E8CB35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7DADF85B1F347E8200BB0DF2 /* Suohai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Suohai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DADF85E1F347E8200BB0DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7DADF8621F347E8200BB0DF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -26,7 +27,6 @@
 		7DADF8701F347ED100BB0DF2 /* NSMenuItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMenuItem+Extension.swift"; sourceTree = "<group>"; };
 		7DADF8731F347F0200BB0DF2 /* SuohaiListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuohaiListener.swift; sourceTree = "<group>"; };
 		7DADF8741F347F0200BB0DF2 /* SuohaiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuohaiController.swift; sourceTree = "<group>"; };
-		7DB6A5C91F37081700149D6D /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		7DB6A5D21F37090100149D6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7DB6A5D41F37090200149D6D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,7 +66,7 @@
 				7DADF8731F347F0200BB0DF2 /* SuohaiListener.swift */,
 				7DADF8741F347F0200BB0DF2 /* SuohaiController.swift */,
 				7DADF8621F347E8200BB0DF2 /* Assets.xcassets */,
-				7DB6A5C91F37081700149D6D /* Main.storyboard */,
+				7D4CA5B2215CE13900E8CB35 /* Main.storyboard */,
 				7DADF86D1F347E8E00BB0DF2 /* Supporting Files */,
 			);
 			path = Suohai;
@@ -134,6 +134,7 @@
 			knownRegions = (
 				en,
 				"zh-Hans",
+				Base,
 			);
 			mainGroup = 7DADF8521F347E8200BB0DF2;
 			productRefGroup = 7DADF85C1F347E8200BB0DF2 /* Products */;
@@ -150,7 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7DB6A5CA1F37081700149D6D /* Main.storyboard in Resources */,
+				7D4CA5B0215CE13900E8CB35 /* Main.storyboard in Resources */,
 				7DB6A5D11F37090100149D6D /* Localizable.strings in Resources */,
 				7DADF8631F347E8200BB0DF2 /* Assets.xcassets in Resources */,
 			);
@@ -174,6 +175,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		7D4CA5B2215CE13900E8CB35 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7D4CA5B1215CE13900E8CB35 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		7DB6A5D31F37090100149D6D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -307,7 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.sunnyyoung.Suohai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -322,7 +331,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.sunnyyoung.Suohai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
