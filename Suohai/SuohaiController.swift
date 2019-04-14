@@ -16,7 +16,7 @@ class SuohaiController: NSObject {
 
     override init() {
         super.init()
-        self.setupItems()
+        self.prepareItems()
         NotificationCenter.addObserver(observer: self, selector: #selector(reloadMenu), name: .audioDevicesDidChange)
     }
 
@@ -24,22 +24,9 @@ class SuohaiController: NSObject {
         NotificationCenter.removeObserver(observer: self, name: .audioDevicesDidChange)
     }
 
-    private func setupItems() {
-        self.menu = {
-            let menu = NSMenu()
-            menu.delegate = self
-            return menu
-        }()
-        self.statusItem = {
-            let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-            item.image = #imageLiteral(resourceName: "StatusItem")
-            item.target = self
-            item.menu = self.menu
-            return item
-        }()
-    }
-
-    @objc func reloadMenu() {
+    // Mark: Notification handler
+    @objc
+    func reloadMenu() {
         let listener = SuohaiListener.shared
         self.menu.removeAllItems()
         self.menu.addItem(NSMenuItem(title: NSLocalizedString("OutputDevices", comment: "")))
@@ -73,7 +60,8 @@ class SuohaiController: NSObject {
     }
 
     // MARK: Event method
-    @objc private func selectOutputDeviceAction(_ sender: NSMenuItem) {
+    @objc
+    private func selectOutputDeviceAction(_ sender: NSMenuItem) {
         let listener = SuohaiListener.shared
         guard let device = listener.devices.first(where: {$0.id == UInt32(sender.tag)}) else {
             return
@@ -81,7 +69,8 @@ class SuohaiController: NSObject {
         listener.selectedOutputDeviceID = listener.selectedOutputDeviceID != device.id ? device.id : nil
     }
 
-    @objc private func selectInputDeviceAction(_ sender: NSMenuItem) {
+    @objc
+    private func selectInputDeviceAction(_ sender: NSMenuItem) {
         let listener = SuohaiListener.shared
         guard let device = listener.devices.first(where: {$0.id == UInt32(sender.tag)}) else {
             return
@@ -89,8 +78,25 @@ class SuohaiController: NSObject {
         listener.selectedInputDeviceID = listener.selectedInputDeviceID != device.id ? device.id : nil
     }
 
-    @objc private func quitAction(_ sender: NSMenuItem) {
+    @objc
+    private func quitAction(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(nil)
+    }
+
+    // MARK: UI method
+    private func prepareItems() {
+        self.menu = {
+            let menu = NSMenu()
+            menu.delegate = self
+            return menu
+        }()
+        self.statusItem = {
+            let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+            item.image = #imageLiteral(resourceName: "StatusItem")
+            item.target = self
+            item.menu = self.menu
+            return item
+        }()
     }
 }
 

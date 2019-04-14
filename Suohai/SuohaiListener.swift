@@ -24,6 +24,11 @@ enum SuohaiNotification: String {
     }
 }
 
+struct SuohaiDefaultKeys {
+    static let audioInputDeviceID = "AudioInputDeviceID"
+    static let audioOutputDeviceID = "AudioOutputDeviceID"
+}
+
 enum AudioDeviceType {
     case output
     case input
@@ -54,17 +59,17 @@ struct AudioAddress {
 }
 
 struct AudioListener {
-    static var devices: AudioObjectPropertyListenerProc = {_, _, _, _ in
+    static var devices: AudioObjectPropertyListenerProc = { _, _, _, _ in
         NotificationCenter.post(suohaiNotification: .audioDevicesDidChange)
         return 0
     }
 
-    static var output: AudioObjectPropertyListenerProc = {_, _, _, _ in
+    static var output: AudioObjectPropertyListenerProc = { _, _, _, _ in
         NotificationCenter.post(suohaiNotification: .audioOutputDeviceDidChange)
         return 0
     }
 
-    static var input: AudioObjectPropertyListenerProc = {_, _, _, _ in
+    static var input: AudioObjectPropertyListenerProc = { _, _, _, _ in
         NotificationCenter.post(suohaiNotification: .audioInputDeviceDidChange)
         return 0
     }
@@ -123,23 +128,26 @@ class SuohaiListener {
 
     var selectedOutputDeviceID: AudioDeviceID? {
         didSet {
-            guard var deviceID = self.selectedOutputDeviceID else {
-                return
+            if var deviceID = self.selectedOutputDeviceID {
+                self.setOutputDevice(id: &deviceID)
             }
-            self.setOutputDevice(id: &deviceID)
+            UserDefaults.standard.set(self.selectedOutputDeviceID, forKey: SuohaiDefaultKeys.audioOutputDeviceID)
         }
     }
+
     var selectedInputDeviceID: AudioDeviceID? {
         didSet {
-            guard var deviceID = self.selectedInputDeviceID else {
-                return
+            if var deviceID = self.selectedInputDeviceID {
+                self.setInputDevice(id: &deviceID)
             }
-            self.setInputDevice(id: &deviceID)
+            UserDefaults.standard.set(self.selectedInputDeviceID, forKey: SuohaiDefaultKeys.audioInputDeviceID)
         }
     }
 
     // MARK: Lifecycle
     init() {
+        self.selectedOutputDeviceID = UserDefaults.standard.value(forKey: SuohaiDefaultKeys.audioOutputDeviceID) as? AudioDeviceID
+        self.selectedInputDeviceID = UserDefaults.standard.value(forKey: SuohaiDefaultKeys.audioInputDeviceID) as? AudioDeviceID
         NotificationCenter.addObserver(observer: self, selector: #selector(handleNotification(_:)), name: .audioDevicesDidChange)
         NotificationCenter.addObserver(observer: self, selector: #selector(handleNotification(_:)), name: .audioOutputDeviceDidChange)
         NotificationCenter.addObserver(observer: self, selector: #selector(handleNotification(_:)), name: .audioInputDeviceDidChange)
@@ -164,8 +172,19 @@ class SuohaiListener {
         AudioObjectRemovePropertyListener(AudioObjectID(kAudioObjectSystemObject), &AudioAddress.inputDevice, AudioListener.input, nil)
     }
 
+    // MARK: Private method
+    private func setOutputDevice(id: inout AudioDeviceID) {
+        AudioObjectSetPropertyData(AudioObjectID(kAudioObjectSystemObject), &AudioAddress.outputDevice, 0, nil, UInt32(MemoryLayout<AudioDeviceID>.size), &id)
+    }
+
+    private func setInputDevice(id: inout AudioDeviceID) {
+        AudioObjectSetPropertyData(AudioObjectID(kAudioObjectSystemObject), &AudioAddress.inputDevice, 0, nil, UInt32(MemoryLayout<AudioDeviceID>.size), &id)
+        UserDefaults.standard.set(id, forKey: SuohaiDefaultKeys.audioInputDeviceID)
+    }
+
     // MARK: Notification handler
-    @objc private func handleNotification(_ notification: Notification) {
+    @objc
+    private func handleNotification(_ notification: Notification) {
         if notification.name == SuohaiNotification.audioDevicesDidChange.notificationName {
             if !self.devices.contains(where: {$0.id == self.selectedOutputDeviceID}) {
                 self.selectedOutputDeviceID = nil
@@ -184,13 +203,5 @@ class SuohaiListener {
             }
             self.setInputDevice(id: &deviceID)
         }
-    }
-
-    private func setOutputDevice(id: inout AudioDeviceID) {
-        AudioObjectSetPropertyData(AudioObjectID(kAudioObjectSystemObject), &AudioAddress.outputDevice, 0, nil, UInt32(MemoryLayout<AudioDeviceID>.size), &id)
-    }
-
-    private func setInputDevice(id: inout AudioDeviceID) {
-        AudioObjectSetPropertyData(AudioObjectID(kAudioObjectSystemObject), &AudioAddress.inputDevice, 0, nil, UInt32(MemoryLayout<AudioDeviceID>.size), &id)
     }
 }
