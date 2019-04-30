@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CAE782155A8E3334C968CF5 /* libPods-Suohai.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A89FC887F313D5AB0C951C29 /* libPods-Suohai.a */; };
 		7D4CA5B0215CE13900E8CB35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D4CA5B2215CE13900E8CB35 /* Main.storyboard */; };
 		7DADF85F1F347E8200BB0DF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DADF85E1F347E8200BB0DF2 /* AppDelegate.swift */; };
 		7DADF8631F347E8200BB0DF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DADF8621F347E8200BB0DF2 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		105AC114F77E564BB986E399 /* Pods-Suohai.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Suohai.debug.xcconfig"; path = "Target Support Files/Pods-Suohai/Pods-Suohai.debug.xcconfig"; sourceTree = "<group>"; };
 		7D4CA5B1215CE13900E8CB35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7DADF85B1F347E8200BB0DF2 /* Suohai.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Suohai.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DADF85E1F347E8200BB0DF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -29,6 +31,8 @@
 		7DADF8741F347F0200BB0DF2 /* SuohaiController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuohaiController.swift; sourceTree = "<group>"; };
 		7DB6A5D21F37090100149D6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7DB6A5D41F37090200149D6D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		A89FC887F313D5AB0C951C29 /* libPods-Suohai.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Suohai.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7865E27C1313B0E4B565FB0 /* Pods-Suohai.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Suohai.release.xcconfig"; path = "Target Support Files/Pods-Suohai/Pods-Suohai.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +40,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CAE782155A8E3334C968CF5 /* libPods-Suohai.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00118BAC2C7698431D2620F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A89FC887F313D5AB0C951C29 /* libPods-Suohai.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0AF0FEC154C46A0F2222214B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				105AC114F77E564BB986E399 /* Pods-Suohai.debug.xcconfig */,
+				C7865E27C1313B0E4B565FB0 /* Pods-Suohai.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7DADF8521F347E8200BB0DF2 = {
 			isa = PBXGroup;
 			children = (
 				7DADF85D1F347E8200BB0DF2 /* Suohai */,
 				7DADF85C1F347E8200BB0DF2 /* Products */,
+				0AF0FEC154C46A0F2222214B /* Pods */,
+				00118BAC2C7698431D2620F9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +121,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7DADF86A1F347E8200BB0DF2 /* Build configuration list for PBXNativeTarget "Suohai" */;
 			buildPhases = (
+				3BC904A78994C9A79A4AF185 /* [CP] Check Pods Manifest.lock */,
 				7DADF8571F347E8200BB0DF2 /* Sources */,
 				7DADF8581F347E8200BB0DF2 /* Frameworks */,
 				7DADF8591F347E8200BB0DF2 /* Resources */,
@@ -158,6 +183,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3BC904A78994C9A79A4AF185 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Suohai-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7DADF8571F347E8200BB0DF2 /* Sources */ = {
@@ -228,7 +278,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -252,6 +302,7 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -288,7 +339,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -304,11 +355,13 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 		7DADF86B1F347E8200BB0DF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 105AC114F77E564BB986E399 /* Pods-Suohai.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -316,12 +369,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.sunnyyoung.Suohai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		7DADF86C1F347E8200BB0DF2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7865E27C1313B0E4B565FB0 /* Pods-Suohai.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -329,7 +382,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.sunnyyoung.Suohai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

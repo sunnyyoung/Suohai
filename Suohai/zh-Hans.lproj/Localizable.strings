@@ -9,3 +9,4 @@
 "Quit" = "退出";
 "OutputDevices" = "输出设备：";
 "InputDevices" = "输入设备：";
+"LaunchAtLogin" = "开机自动启动";

@@ -9,6 +9,7 @@
 import Cocoa
 import CoreServices
 import CoreAudio
+import LoginServiceKit
 
 class SuohaiController: NSObject {
     private var menu: NSMenu!
@@ -55,6 +56,12 @@ class SuohaiController: NSObject {
             }())
         }
         self.menu.addItem(NSMenuItem.separator())
+        self.menu.addItem({
+            let item = NSMenuItem(title: NSLocalizedString("LaunchAtLogin", comment: ""), target: self, action: #selector(toggleLaunchAtLoginAction(_:)))
+            item.state = LoginServiceKit.isExistLoginItems() ? .on : .off
+            return item
+        }())
+        self.menu.addItem(NSMenuItem.separator())
         self.menu.addItem(NSMenuItem(title: NSLocalizedString("Quit", comment: ""), target: self, action: #selector(quitAction(_:)), keyEquivalent: "q"))
         self.menu.update()
     }
@@ -76,6 +83,15 @@ class SuohaiController: NSObject {
             return
         }
         listener.selectedInputDeviceID = listener.selectedInputDeviceID != device.id ? device.id : nil
+    }
+
+    @objc
+    private func toggleLaunchAtLoginAction(_ sender: NSMenuItem) {
+        if LoginServiceKit.isExistLoginItems() {
+            LoginServiceKit.removeLoginItems()
+        } else {
+            LoginServiceKit.addLoginItems()
+        }
     }
 
     @objc

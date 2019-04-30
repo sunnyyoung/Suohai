@@ -9,3 +9,4 @@
 "Quit" = "Quit";
 "OutputDevices" = "Output devices:";
 "InputDevices" = "Input devices:";
+"LaunchAtLogin" = "Launch at login";
